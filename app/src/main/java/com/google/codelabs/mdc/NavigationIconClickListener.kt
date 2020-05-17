@@ -43,7 +43,10 @@ class NavigationIconClickListener @JvmOverloads internal constructor(
 
         val translateY = height - context.resources.getDimensionPixelSize(R.dimen.shr_product_grid_reveal_height)
 
-        val animator = ObjectAnimator.ofFloat(sheet, "translationY", (if (backdropShown) translateY else 0).toFloat())
+        val animator =
+                ObjectAnimator.ofFloat(
+                        sheet, "translationY",
+                        (if (backdropShown) translateY else 0).toFloat())
         animator.duration = 500
         if (interpolator != null) {
             animator.interpolator = interpolator
