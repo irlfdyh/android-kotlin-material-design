@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.codelabs.mdc.network.ImageRequester
 
 import com.google.codelabs.mdc.network.ProductEntry
 
@@ -21,7 +22,12 @@ class ProductCardRecyclerViewAdapter(private val productList: List<ProductEntry>
     }
 
     override fun onBindViewHolder(holder: ProductCardViewHolder, position: Int) {
-        // TODO: Put ViewHolder binding code here in MDC-102
+        if (position < productList.size) {
+            val product = productList[position]
+            holder.productTitle.text = product.title
+            holder.productPrice.text = product.price
+            ImageRequester.setImageFromUrl(holder.productImage, product.url)
+        }
     }
 
     override fun getItemCount(): Int {
